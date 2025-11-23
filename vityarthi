@@ -1,0 +1,50 @@
+#Stimulated Bank Account
+account={
+    'pin':'2005',
+    'balance':5000.0
+}
+
+def display_menu():
+    print("\n welcome to the ATM Machine")
+    print("\n 1. Check balance of your account")
+    print("\n 2. deposit money in your account")
+    print("\n 3. withdraw cash from your account ")
+    print("\n 4. exit")
+    return input("Please select an option [1-4] :")
+def check_balance():
+    print("\n your current balance is : 5000")
+def deposit_money():
+        amount=float(input("enter the amount to deposit"))
+        if amount >0:
+            account['balance']+=amount
+            print(f"${amount:.2f} deposited . New balance:${account['balance']:.2f}")
+        else:
+            print("\n invalid deposit balance.")
+def withdraw_money():
+    amount=float(input("\n enter the amount to withdraw"))
+    if 0<amount<=account['balance']:
+        account['balance']-=amount
+        print(f"**${amount:.2f}** withdrawn. Remaining balance: **${account['balance']:.2f}**")
+    else:
+        print("Insufficient balance  or invalid amount")
+    
+def run_atm():
+    pin_try=input("Please enter your 4-digit PIN")
+    if pin_try==account['pin']:
+        while True:
+            choice=display_menu()
+            if choice =='1':
+                check_balance()
+            elif choice =='2':
+                 deposit_money()
+            elif choice =='3':
+                 withdraw_money()
+            elif choice =='4':
+             print(" Thank you for using ATM.")
+             break
+            else:
+               print("Invalid option.Please select again.")
+    else:
+        print(" INCORRECT PIN. ACCESS DENIED. ")
+#run the ATM stimululation 
+run_atm()
